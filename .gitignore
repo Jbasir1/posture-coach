@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Data (raw recordings / datasets go here once you start collecting)
+data/raw/
+data/processed/
+*.mp4
+*.avi
+
+# Models
+*.pkl
+*.joblib
