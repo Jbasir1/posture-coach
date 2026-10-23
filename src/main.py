@@ -24,7 +24,7 @@ from alert import beep
 TARGET_FPS = 10
 FRAME_INTERVAL_SEC = 1.0 / TARGET_FPS
 
-SHOW_PREVIEW_WINDOW = True  # set False to run headless in just the terminal
+SHOW_PREVIEW_WINDOW = True  
 
 
 def main() -> None:
@@ -48,7 +48,7 @@ def main() -> None:
     last_tick = 0.0
     try:
         with mp_pose.Pose(
-            model_complexity=0,  # fastest model, fine for this threshold baseline
+            model_complexity=0,  
             min_detection_confidence=0.5,
             min_tracking_confidence=0.5,
         ) as pose:

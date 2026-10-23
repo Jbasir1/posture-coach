@@ -21,18 +21,16 @@ import math
 from dataclasses import dataclass
 
 
-# Landmark indices from MediaPipe Pose (BlazePose topology).
+
 LEFT_SHOULDER, RIGHT_SHOULDER = 11, 12
 LEFT_HIP, RIGHT_HIP = 23, 24
 LEFT_EAR, RIGHT_EAR = 7, 8
 
-# Degrees from vertical before we call it "bad." Start here, tune against
-# your own recordings once you have labeled data (proposal section 4).
+
 TORSO_ANGLE_THRESHOLD_DEG = 15.0
 NECK_ANGLE_THRESHOLD_DEG = 25.0
 
-# Below this, MediaPipe isn't confident in the landmark position.
-# Ties to Risk 1 / Mitigation 1 in the proposal.
+
 MIN_LANDMARK_VISIBILITY = 0.5
 
 
@@ -41,7 +39,7 @@ class PostureResult:
     is_bad: bool
     torso_angle_deg: float
     neck_angle_deg: float
-    low_confidence: bool  # True if we should drop this frame (Mitigation 1)
+    low_confidence: bool  
 
 
 def _midpoint(a, b):
@@ -52,7 +50,7 @@ def _angle_from_vertical_deg(top_point, bottom_point) -> float:
     """Angle between the vector (bottom -> top) and straight up, in degrees.
     0 = perfectly vertical/upright. Larger = more forward lean."""
     dx = top_point[0] - bottom_point[0]
-    dy = bottom_point[1] - top_point[1]  # image y grows downward
+    dy = bottom_point[1] - top_point[1]  
     angle_rad = math.atan2(abs(dx), abs(dy)) if dy != 0 else math.pi / 2
     return math.degrees(angle_rad)
 
